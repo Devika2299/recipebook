@@ -1,0 +1,227 @@
+<!-- 
+
+<div class="container py-5">
+  <h2 class="text-dark text-center"> <i class="bi bi-plus-circle"></i>Create Recipe</h2>
+  <div class="d-flex justify-content-center mb-4">
+    <a routerLink="/dashboard" class="btn btn-info">Dashboard</a> 
+   
+  </div>
+
+<div class="container mt-5 custom-container">
+  <div class="card bg-dark text-white shadow">
+    <div class="card-body">
+      <h1 class="text-center mb-4">Create New Recipe</h1>
+      <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+        <div class="mb-4">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" [(ngModel)]="recipe.title" name="title" required>
+        </div>
+
+        <div class="mb-4">
+          <label for="ingredients" class="form-label">Ingredients</label>
+          <div *ngFor="let ingredient of recipe.ingredients; let i = index" class="input-group mb-2">
+            <input type="text" class="form-control" [(ngModel)]="recipe.ingredients[i]" name="ingredient{{ i }}" required>
+            <button type="button" class="btn btn-danger" (click)="removeIngredient(i)">  <i class="bi bi-trash"></i>Remove</button>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="addIngredient()"> <i class="bi bi-plus-circle"></i> Add Ingredient</button>
+        </div>
+
+        <div class="mb-4">
+          <label for="steps" class="form-label">Steps</label>
+          <div *ngFor="let step of recipe.steps; let i = index" class="input-group mb-2">
+            <input type="text" class="form-control" [(ngModel)]="recipe.steps[i]" name="step{{ i }}" required>
+            <button type="button" class="btn btn-danger" (click)="removeStep(i)">  <i class="bi bi-trash"></i>Remove</button>
+          </div>
+          <button type="button" class="btn btn-primary" (click)="addStep()">   <i class="bi bi-plus-circle"></i>  Add Step</button>
+        </div>
+
+        <div class="mb-4">
+          <label for="cookingTime" class="form-label">Cooking Time (minutes)</label>
+          <input type="number" class="form-control" id="cookingTime" [(ngModel)]="recipe.cookingTime" name="cookingTime" required>
+        </div>
+
+        <div class="mb-4">
+          <label for="difficulty" class="form-label">Difficulty</label>
+          <select class="form-select" [(ngModel)]="recipe.difficulty" name="difficulty" required>
+            <option value="">Select difficulty</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="category" class="form-label">Category</label>
+          <select class="form-select" [(ngModel)]="selectedCategory" (change)="updateCategories()" required>
+            <option value="">Select Category</option>
+            <option value="Main Course">Main Course</option>
+            <option value="Appetizers">Appetizers</option>
+            <option value="Desserts">Desserts</option>
+          </select>
+        </div>
+        
+        <div class="mb-4">
+          <label for="image" class="form-label">Image</label>
+          <input type="file" class="form-control" id="image" (change)="onFileChange($event)" accept="image/*">
+        </div>
+
+
+        <div class="mb-4 form-check">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="recipe.isFavorite" name="isFavorite" id="isFavorite">
+          <label class="form-check-label" for="isFavorite">Mark as Favorite</label>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Create Recipe</button>
+      </form>
+    </div>
+  </div>
+</div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container-fluid py-5" style="background-color: #000000;">
+    <h2 class="text-light text-center"> <i class="bi bi-plus-circle"></i>Create Recipe</h2>
+    <div class="d-flex justify-content-center mb-4">
+      <a routerLink="/dashboard" class="btn btn-info">Dashboard</a> 
+    </div>
+  
+    <div class="container mt-5 custom-container">
+      <div class="card bg-dark text-white shadow">
+        <div class="card-body">
+          <h1 class="text-center mb-4">Create New Recipe</h1>
+          <form (ngSubmit)="onSubmit()" #recipeForm="ngForm">
+            <div class="mb-4">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" [(ngModel)]="recipe.title" name="title" required>
+            </div>
+  
+            <div class="mb-4">
+              <label for="ingredients" class="form-label">Ingredients</label>
+              <div *ngFor="let ingredient of recipe.ingredients; let i = index" class="input-group mb-2">
+                <input type="text" class="form-control" [(ngModel)]="recipe.ingredients[i]" name="ingredient{{ i }}" required>
+                <button type="button" class="btn btn-danger" (click)="removeIngredient(i)"> <i class="bi bi-trash"></i>Remove</button>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="addIngredient()"> <i class="bi bi-plus-circle"></i> Add Ingredient</button>
+            </div>
+  
+            <div class="mb-4">
+              <label for="steps" class="form-label">Steps</label>
+              <div *ngFor="let step of recipe.steps; let i = index" class="input-group mb-2">
+                <input type="text" class="form-control" [(ngModel)]="recipe.steps[i]" name="step{{ i }}" required>
+                <button type="button" class="btn btn-danger" (click)="removeStep(i)"> <i class="bi bi-trash"></i>Remove</button>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="addStep()"> <i class="bi bi-plus-circle"></i> Add Step</button>
+            </div>
+  
+            <div class="mb-4">
+              <label for="cookingTime" class="form-label">Cooking Time (minutes)</label>
+              <input type="number" class="form-control" id="cookingTime" [(ngModel)]="recipe.cookingTime" name="cookingTime" required>
+            </div>
+  
+            <div class="mb-4">
+              <label for="difficulty" class="form-label">Difficulty</label>
+              <select class="form-select" [(ngModel)]="recipe.difficulty" name="difficulty" required>
+                <option value="">Select difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+  
+            <div class="mb-4">
+              <label for="category" class="form-label">Category</label>
+              <select class="form-select" [(ngModel)]="selectedCategory" (change)="updateCategories()" required>
+                <option value="">Select Category</option>
+                <option value="Main Course">Main Course</option>
+                <option value="Appetizers">Appetizers</option>
+                <option value="Desserts">Desserts</option>
+              </select>
+            </div>
+            
+            <div class="mb-4">
+              <label for="image" class="form-label">Image</label>
+              <input type="file" class="form-control" id="image" (change)="onFileChange($event)" accept="image/*">
+            </div>
+  
+            <div class="mb-4 form-check">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="recipe.isFavorite" name="isFavorite" id="isFavorite">
+              <label class="form-check-label" for="isFavorite">Mark as Favorite</label>
+            </div>
+  
+            <button type="submit" class="btn btn-success w-100">Create Recipe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    body {
+      background-color: #000000; /* Darker background for the page */
+    }
+  
+    .card {
+      background-color: #333333; /* Slightly lighter than the body for contrast */
+    }
+  
+    .text-light {
+      color: #ffffff;
+    }
+  </style>
+  

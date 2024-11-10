@@ -1,0 +1,94 @@
+<!-- 
+
+
+
+ <div class="container text-center recipe-dashboard py-5">
+  <h1 class="text-dark">Recipe Dashboard</h1>
+
+  <div class="d-flex mb-4 gap-2 justify-content-center align-items-center">
+    <a class="btn btn-success" [routerLink]="['/recipe-creation']">Create New Recipe</a>
+    <a class="btn btn-info" [routerLink]="['/category-management']">Create New Category</a>
+    <a class="btn btn-warning" [routerLink]="['/favorite-recipes']">Favorites</a>
+    <a class="btn btn-danger" [routerLink]="['/shopping-list']">Shopping List</a>
+  </div>
+  
+  <div class="filters mb-4">
+    <h3 class="text-dark">Filter by Category</h3>
+    <div class="d-flex justify-content-center mb-3">
+      <button class="btn btn-outline" (click)="filterByCategory('Desserts')">Desserts</button>
+      <button class="btn btn-outline" (click)="filterByCategory('Main Course')">Main Course</button>
+      <button class="btn btn-outline" (click)="filterByCategory('Appetizers')">Appetizers</button>
+      <button class="btn btn-outline" (click)="filterByCategory('All')">All</button>
+      <a class="btn btn-info" [routerLink]="['/recipes']">All</a>
+    </div>
+  </div>
+
+  <h2 class="text-dark">All Recipes</h2>
+  <div class="row justify-content-center">
+    <div *ngFor="let recipe of allRecipes" class="col-md-4 mb-4">
+      <div class="card bg-dark text-light h-100">
+        <div class="card-body text-center">
+          <h3 class="card-title">{{ recipe.title }}</h3>
+          <img *ngIf="recipe.imagePath" 
+               [src]="'http://localhost/recipebook_api/' + recipe.imagePath" 
+               alt="{{ recipe.title }}" 
+               class="img-fluid mb-3" 
+               style="max-height: 200px; object-fit: cover; max-width:300px;">
+          <p class="card-text">Cooking Time: {{ recipe.cookingTime }} mins</p>
+          <p class="card-text">Difficulty: {{ recipe.difficulty }}</p>
+          
+          <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-primary me-2" [routerLink]="['/recipe-details', recipe.id]">Read More</button>
+            <button class="btn btn-warning" [routerLink]="['/edit-recipe', recipe.id]">Edit Recipe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+ <div class="container text-center recipe-dashboard py-5" style="background-color: black; color: white;">
+  <h1 class="text-light"><i class="bi bi-house-door"></i> Recipe Dashboard</h1>
+
+  <div class="d-flex mb-4 gap-2 justify-content-center align-items-center">
+    <a class="btn btn-success" [routerLink]="['/recipe-creation']">Create New Recipe</a>
+    <a class="btn btn-warning" [routerLink]="['/favorite-recipes']">Favorites</a>
+    <a class="btn btn-danger" [routerLink]="['/shopping-list']">Shopping List</a>
+  </div>
+  
+  <div class="filters mb-4">
+    <h3 class="text-light">Filter by Category</h3>
+    <div class="d-flex justify-content-center mb-3">
+      <button class="btn btn-outline-light" (click)="filterByCategory('All')">All</button>
+      <a class="btn btn-info" [routerLink]="['/recipes']">All</a>
+    </div>
+  </div>
+
+  <h2 class="text-light">All Recipes</h2>
+  <div *ngIf="allRecipes.length > 0" class="row justify-content-center">
+    <div *ngFor="let recipe of allRecipes" class="col-md-4 mb-4">
+      <div class="card bg-dark text-light h-100">
+        <div class="card-body text-center">
+          <h3 class="card-title">{{ recipe?.title }}</h3>
+          <img *ngIf="recipe?.imagePath" 
+               [src]="'http://localhost/recipebook_api/' + recipe.imagePath" 
+               alt="{{ recipe?.title }}" 
+               class="img-fluid mb-3" 
+               style="max-height: 200px; object-fit: cover; max-width:300px;">
+          <p class="card-text">Cooking Time: {{ recipe?.cookingTime }} mins</p>
+          <p class="card-text">Difficulty: {{ recipe?.difficulty }}</p>
+          
+          <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-primary me-2" [routerLink]="['/recipe-details', recipe?.id]">Read More</button>
+            <button class="btn btn-warning" [routerLink]="['/edit-recipe', recipe?.id]">Edit Recipe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

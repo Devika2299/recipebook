@@ -1,0 +1,46 @@
+
+<div class="container py-5">
+    <h2 class="text-dark text-center"> <i class="bi bi-info-circle"></i>About Recipe</h2>
+    <div class="d-flex justify-content-center mb-4">
+        <a routerLink="/dashboard" class="btn btn-info mx-2">Dashboard</a> 
+        <a class="btn btn-warning mx-2" [routerLink]="['/favorite-recipes']">Favorites</a>
+        <a class="btn btn-danger mx-2" [routerLink]="['/shopping-list']">Shopping List</a>
+    </div>
+
+    <div class="container mt-5" style="background-color: #343a40; padding: 20px; border-radius: 5px;">
+        <div class="card shadow" style="background-color: #2b2b2b; color: #f1f1f1;">
+            <div class="card-body">
+                <h1 class="card-title mb-4">{{ recipe.title }}</h1>
+                <img *ngIf="recipe.imagePath" 
+                    [src]="'http://localhost/recipebook_api/' + recipe.imagePath" 
+                    alt="{{ recipe.title }}" 
+                    class="img-fluid mb-3" 
+                    style="max-height: 350px; object-fit: cover; max-width: 250px;">
+
+                <p><strong>Cooking Time:</strong> {{ recipe.cookingTime }} mins</p>
+                <p><strong>Difficulty:</strong> {{ recipe.difficulty }}</p>
+                <p><strong>Category:</strong> {{ recipe.category }}</p>
+
+                <h3>Ingredients</h3>
+                <ul>
+                    <li *ngFor="let ingredient of recipe.ingredients">
+                        {{ ingredient }}
+                    </li>
+                </ul>
+
+                <h3>Steps</h3>
+                <ol>
+                    <li *ngFor="let step of recipe.steps">
+                        {{ step }}
+                    </li>
+                </ol>
+
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="btn btn-primary" (click)="editRecipe()">Edit Recipe</button>
+                    <button class="btn btn-danger" (click)="deleteRecipe()">Delete Recipe</button>
+                    <a routerLink="/dashboard" class="btn btn-secondary">Back to Recipes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

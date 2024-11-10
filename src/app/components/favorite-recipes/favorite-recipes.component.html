@@ -1,0 +1,100 @@
+<!-- 
+
+
+
+
+   <div class="container mt-5">
+    <h1 class="mb-4 text-center text-dark"><i class="bi bi-heart"></i>Favorite Recipes</h1>
+    <div class="d-flex justify-content-center mb-4">
+      <a routerLink="/dashboard" class="btn btn-info">Back to Dashboard</a> 
+    </div>
+  <div *ngIf="favoriteRecipes.length > 0; else noFavorites" class="row">
+      <div *ngFor="let recipe of favoriteRecipes" class="col-md-4 mb-4">
+        <div class="card h-100 bg-dark text-light">
+          <img *ngIf="recipe.imagePath" 
+               [src]="'http://localhost/recipebook_api/' + recipe.imagePath" 
+               alt="{{ recipe.title }}" 
+               class="card-img-top" 
+               style="max-height: 250px; object-fit: cover; max-width:400px;">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ recipe.title }}</h5>
+            <button (click)="toggleFavorite(recipe.id)" class="btn btn-outline-danger mt-3">
+              {{ isFavorite(recipe.id) ? 'Remove from Favorites' : 'Add to Favorites' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <ng-template #noFavorites>
+      <div class="alert alert-info text-center" role="alert">
+        No favorite recipes found. Start adding your favorites!
+      </div>
+    </ng-template>
+  </div>
+   -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <div class="container-fluid py-5" style="background-color: #000000;">
+    <div class="container mt-5">
+      <h1 class="mb-4 text-center text-light"><i class="bi bi-heart"></i> Favorite Recipes</h1>
+      <div class="d-flex justify-content-center mb-4">
+        <a routerLink="/dashboard" class="btn btn-info">Back to Dashboard</a> 
+      </div>
+      
+      <div *ngIf="favoriteRecipes.length > 0; else noFavorites" class="row">
+        <div *ngFor="let recipe of favoriteRecipes" class="col-md-4 mb-4">
+          <div class="card h-100 bg-dark text-light">
+            <img *ngIf="recipe.imagePath" 
+                 [src]="'http://localhost/recipebook_api/' + recipe.imagePath" 
+                 alt="{{ recipe.title }}" 
+                 class="card-img-top" 
+                 style="max-height: 250px; object-fit: cover; max-width:400px;">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ recipe.title }}</h5>
+              <button (click)="toggleFavorite(recipe.id)" class="btn btn-outline-danger mt-3">
+                {{ isFavorite(recipe.id) ? 'Remove from Favorites' : 'Add to Favorites' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <ng-template #noFavorites>
+        <div class="alert alert-info text-center" role="alert">
+          No favorite recipes found. Start adding your favorites!
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
+  <style>
+    body {
+      background-color: #000000; /* Darker background for the entire page */
+    }
+  
+    .text-light {
+      color: #ffffff;
+    }
+  
+    .btn-outline-danger {
+      color: #ff6b6b;
+      border-color: #ff6b6b;
+    }
+    
+    .btn-outline-danger:hover {
+      background-color: #ff6b6b;
+      color: #ffffff;
+    }
+  </style>
+  

@@ -1,0 +1,112 @@
+
+
+
+<!-- 
+ <div *ngIf="allRecipes">
+    <h2 class="text-dark d-flex justify-content-center align-items-center"> <i class="bi bi-book"></i> All Recipes</h2>
+    <div class="d-flex justify-content-center mb-4">
+      <a routerLink="/dashboard" class="btn btn-info">Dashboard</a> 
+    </div>
+    <div class="row justify-content-center">
+        <div *ngFor="let recipe of allRecipes" class="col-md-4 mb-4">
+            <div class="card bg-dark text-light h-100 d-flex flex-column">
+                <div class="card-body text-center flex-grow-1">
+                    <h3 class="card-title">{{ recipe.title }}</h3>
+                    <img *ngIf="recipe.imagePath" 
+                         [src]="'http://localhost/recipebook_api/' + recipe.imagePath" 
+                         alt="{{ recipe.title }}" 
+                         class="img-fluid mb-3" 
+                         style="max-height: 350px; object-fit: cover; max-width: 400px;">
+                    <p class="card-text">Cooking Time: {{ recipe.cookingTime }} mins</p>
+                    <p class="card-text">Difficulty: {{ recipe.difficulty }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary mx-1" [routerLink]="['/recipe-details', recipe.id]">Read More</button>
+                        <button class="btn btn-secondary mx-1" (click)="addToShoppingList(recipe)"> <i class="bi bi-cart"></i>Add to Shopping List</button>
+                        <button class="btn btn-warning mx-1" [routerLink]="['/edit-recipe', recipe.id]">Edit Recipe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container-fluid py-5" style="background-color: #000000;">
+    <div *ngIf="allRecipes" class="container mt-5">
+      <h2 class="text-light text-center mb-4"><i class="bi bi-book"></i> All Recipes</h2>
+      <div class="d-flex justify-content-center mb-4">
+        <a routerLink="/dashboard" class="btn btn-info">Dashboard</a> 
+      </div>
+      
+      <div class="row justify-content-center">
+        <div *ngFor="let recipe of allRecipes" class="col-md-4 mb-4">
+          <div class="card bg-dark text-light h-100 d-flex flex-column">
+            <div class="card-body text-center flex-grow-1">
+              <h3 class="card-title">{{ recipe.title }}</h3>
+              <img *ngIf="recipe.imagePath" 
+                   [src]="'http://localhost/recipebook_api/' + recipe.imagePath" 
+                   alt="{{ recipe.title }}" 
+                   class="img-fluid mb-3" 
+                   style="max-height: 350px; object-fit: cover; max-width: 400px;">
+              <p class="card-text">Cooking Time: {{ recipe.cookingTime }} mins</p>
+              <p class="card-text">Difficulty: {{ recipe.difficulty }}</p>
+            </div>
+            <div class="card-footer text-center">
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-primary mx-1" [routerLink]="['/recipe-details', recipe.id]">Read More</button>
+                <button class="btn btn-secondary mx-1" (click)="addToShoppingList(recipe)">
+                  <i class="bi bi-cart"></i> Add to Shopping List
+                </button>
+                <button class="btn btn-warning mx-1" [routerLink]="['/edit-recipe', recipe.id]">Edit Recipe</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <style>
+    body {
+      background-color: #000000; 
+       }
+    
+    .text-light {
+      color: #ffffff;
+    }
+  
+    .btn-primary, .btn-secondary, .btn-warning {
+      border-radius: 0.25rem;
+    }
+  
+    .btn-primary:hover, .btn-secondary:hover, .btn-warning:hover {
+      opacity: 0.9;
+    }
+  </style>
+  
+
+
+
+
+
+
+
+
+
+
+
+ -->

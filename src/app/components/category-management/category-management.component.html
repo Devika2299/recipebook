@@ -1,0 +1,35 @@
+
+
+
+
+  <div class="container mt-5 category-management">
+    <h2 class="text-center mb-4">    <i class="bi bi-grid"></i>Category Management</h2>
+    <div class="d-flex justify-content-center mb-4">
+      <a routerLink="/dashboard" class="btn btn-info mx-2">Dashboard</a> 
+      </div>
+ 
+    <form [formGroup]="categoryForm" (ngSubmit)="addCategory()" class="bg-light p-4 rounded shadow-sm">
+      <div class="form-group mb-3">
+        <label for="categoryName" class="form-label">Category Name:</label>
+        <input
+          id="categoryName"
+          formControlName="categoryName"
+          class="form-control"
+          placeholder="Enter category name"
+          [ngClass]="{'is-invalid': categoryForm.get('categoryName')?.invalid && (categoryForm.get('categoryName')?.dirty || categoryForm.get('categoryName')?.touched)}"
+        />
+        <div *ngIf="categoryForm.get('categoryName')?.invalid && (categoryForm.get('categoryName')?.dirty || categoryForm.get('categoryName')?.touched)" class="invalid-feedback">
+          <small *ngIf="categoryForm.get('categoryName')?.errors?.['required']">Category name is required.</small>
+        </div>
+      </div>
+    
+      <button type="submit" class="btn btn-primary w-100" [disabled]="categoryForm.invalid">Add Category</button>
+    </form>
+  <h3 class="text-center mt-4 mb-3">Existing Categories</h3>
+    <ul class="list-group">
+      <li *ngFor="let cat of category" class="list-group-item d-flex justify-content-between align-items-center">
+        {{ cat.name }}
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,41 @@
+
+<div class="container py-5">
+  <h2 class="text-dark text-center">  <i class="bi bi-cart"></i> Shopping List</h2>
+   <div class="d-flex justify-content-center mb-4">
+              <a routerLink="/dashboard" class="btn btn-info">Dashboard</a> 
+            </div>
+  <div class="shopping-list bg-dark p-4 rounded">
+    <ul class="list-group">
+      <li *ngFor="let item of shoppingList" class="list-group-item bg-secondary text-white d-flex justify-content-between align-items-center mb-3 shadow rounded">
+        <div class="d-flex align-items-center">
+          <img *ngIf="item.imagePath" 
+               [src]="'http://localhost/recipebook_api/' + item.imagePath" 
+               alt="{{ item.title }}" 
+               class="img-fluid me-3" 
+               style="max-height: 400px; object-fit: cover; max-width: 200px; border-radius: 8px;">
+          <div>
+            <h5 class="mb-1">{{ item.title }}</h5>
+            <div>
+              <strong>Ingredients:</strong>
+              <ul class="mb-0">
+                <li *ngFor="let ingredient of item.ingredients">{{ ingredient }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <button class="btn btn-danger btn-sm" (click)="removeFromShoppingList(item)">Remove</button>
+      </li>
+    </ul>
+    <div *ngIf="shoppingList.length === 0" class="alert alert-light text-center mt-3">Your shopping list is empty.</div>
+  </div>
+</div> 
+
+
+
+
+
+
+
+
+ 

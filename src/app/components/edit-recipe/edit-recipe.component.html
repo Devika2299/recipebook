@@ -1,0 +1,221 @@
+<!-- 
+
+
+
+           <div class="container py-5">
+            <h2 class="text-dark text-center"> <i class="bi bi-pencil"></i> Edit Recipe</h2>
+            <div class="d-flex justify-content-center mb-4">
+              <a routerLink="/dashboard" class="btn btn-info mx-2">Dashboard</a> 
+              <a class="btn btn-warning mx-2" [routerLink]="['/favorite-recipes']">Favorites</a>
+              <a class="btn btn-danger mx-2" [routerLink]="['/shopping-list']">shopping list</a>
+            </div>
+           <form (ngSubmit)="updateRecipe()">
+            <div class="card" style="max-width: 500px; margin: auto; background-color: #212529;">
+              <div class="card-body" style="color: white;">
+                <div class="form-group mb-3">
+                  <label for="title" class="text-light">Title</label>
+                  <input
+                    type="text"
+                    id="title"
+                    class="form-control"
+                    [(ngModel)]="recipe.title"
+                    name="title"
+                    placeholder="Enter recipe title"
+                    required
+                  />
+                </div>
+          
+                <div class="form-group mb-3">
+                  <label for="ingredients" class="text-light">Ingredients</label>
+                  <div *ngFor="let ingredient of recipe.ingredients; let i = index" class="d-flex mb-2">
+                    <input
+                      type="text"
+                      class="form-control me-2"
+                      [(ngModel)]="recipe.ingredients[i]"
+                      name="ingredient{{ i }}"
+                      placeholder="Enter ingredient"
+                      required
+                    />
+                    <button type="button" class="btn btn-danger" (click)="removeIngredient(i)"><i class="bi bi-trash"></i></button>
+                  </div>
+                  <button type="button" class="btn btn-primary" (click)="addIngredient()">  <i class="bi bi-plus-circle"></i>Add Ingredient</button>
+                </div>
+          
+                <div class="form-group mb-3">
+                  <label for="steps" class="text-light">Steps</label>
+                  <div *ngFor="let step of recipe.steps; let i = index" class="d-flex mb-2">
+                    <input
+                      type="text"
+                      class="form-control me-2"
+                      [(ngModel)]="recipe.steps[i]"
+                      name="step{{ i }}"
+                      placeholder="Enter step"
+                      required
+                    />
+                    <button type="button" class="btn btn-danger" (click)="removeStep(i)"><i class="bi bi-trash"></i></button>
+                  </div>
+                  <button type="button" class="btn btn-primary" (click)="addStep()">  <i class="bi bi-plus-circle"></i>Add Step</button>
+                </div>
+          
+                <div class="form-group mb-3">
+                  <label for="cookingTime" class="text-light">Cooking Time (mins)</label>
+                  <input
+                    type="number"
+                    id="cookingTime"
+                    class="form-control"
+                    [(ngModel)]="recipe.cookingTime"
+                    name="cookingTime"
+                    placeholder="Enter cooking time"
+                    required
+                    min="1"
+                  />
+                </div>
+          
+                <div class="form-group mb-3">
+                  <label for="difficulty" class="text-light">Difficulty</label>
+                  <select
+                    class="form-select"
+                    id="difficulty"
+                    [(ngModel)]="recipe.difficulty"
+                    name="difficulty"
+                    required
+                  >
+                    <option value="" disabled>Select Difficulty</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                  </select>
+                </div>
+           <div class="mb-4 form-check">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="recipe.isFavorite" name="isFavorite" id="isFavorite">
+          <label class="form-check-label" for="isFavorite">Mark as Favorite</label>
+        </div>
+        <div class="text-center">
+        <button type="submit" class="btn btn-info btn-block me-2">Edit Recipe</button>
+        <button type="button" class="btn btn-danger btn-block me-2" (click)="confirmDelete(recipe.id)">Delete Recipe</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+           -->
+
+
+
+
+
+
+
+
+
+           <div class="container py-5" style="background-color: black; color: white;">
+            <h2 class="text-light text-center"><i class="bi bi-pencil"></i> Edit Recipe</h2>
+            
+            <div class="d-flex justify-content-center mb-4">
+              <a routerLink="/dashboard" class="btn btn-info mx-2">Dashboard</a> 
+              <a class="btn btn-warning mx-2" [routerLink]="['/favorite-recipes']">Favorites</a>
+              <a class="btn btn-danger mx-2" [routerLink]="['/shopping-list']">Shopping List</a>
+            </div>
+            
+            <form (ngSubmit)="updateRecipe()">
+              <div class="card" style="max-width: 500px; margin: auto; background-color: #212529;">
+                <div class="card-body" style="color: white;">
+                  
+                  <div class="form-group mb-3">
+                    <label for="title" class="text-light">Title</label>
+                    <input
+                      type="text"
+                      id="title"
+                      class="form-control"
+                      [(ngModel)]="recipe.title"
+                      name="title"
+                      placeholder="Enter recipe title"
+                      required
+                    />
+                  </div>
+          
+                  <div class="form-group mb-3">
+                    <label for="ingredients" class="text-light">Ingredients</label>
+                    <div *ngFor="let ingredient of recipe.ingredients; let i = index" class="d-flex mb-2">
+                      <input
+                        type="text"
+                        class="form-control me-2"
+                        [(ngModel)]="recipe.ingredients[i]"
+                        name="ingredient{{ i }}"
+                        placeholder="Enter ingredient"
+                        required
+                      />
+                      <button type="button" class="btn btn-danger" (click)="removeIngredient(i)">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="addIngredient()">
+                      <i class="bi bi-plus-circle"></i> Add Ingredient
+                    </button>
+                  </div>
+          
+                  <div class="form-group mb-3">
+                    <label for="steps" class="text-light">Steps</label>
+                    <div *ngFor="let step of recipe.steps; let i = index" class="d-flex mb-2">
+                      <input
+                        type="text"
+                        class="form-control me-2"
+                        [(ngModel)]="recipe.steps[i]"
+                        name="step{{ i }}"
+                        placeholder="Enter step"
+                        required
+                      />
+                      <button type="button" class="btn btn-danger" (click)="removeStep(i)">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="addStep()">
+                      <i class="bi bi-plus-circle"></i> Add Step
+                    </button>
+                  </div>
+          
+                  <div class="form-group mb-3">
+                    <label for="cookingTime" class="text-light">Cooking Time (mins)</label>
+                    <input
+                      type="number"
+                      id="cookingTime"
+                      class="form-control"
+                      [(ngModel)]="recipe.cookingTime"
+                      name="cookingTime"
+                      placeholder="Enter cooking time"
+                      required
+                      min="1"
+                    />
+                  </div>
+          
+                  <div class="form-group mb-3">
+                    <label for="difficulty" class="text-light">Difficulty</label>
+                    <select
+                      class="form-select"
+                      id="difficulty"
+                      [(ngModel)]="recipe.difficulty"
+                      name="difficulty"
+                      required
+                    >
+                      <option value="" disabled>Select Difficulty</option>
+                      <option value="Easy">Easy</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Hard">Hard</option>
+                    </select>
+                  </div>
+          
+                  <div class="mb-4 form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="recipe.isFavorite" name="isFavorite" id="isFavorite">
+                    <label class="form-check-label text-light" for="isFavorite">Mark as Favorite</label>
+                  </div>
+          
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-info btn-block me-2">Edit Recipe</button>
+                    <button type="button" class="btn btn-danger btn-block me-2" (click)="confirmDelete(recipe.id)">Delete Recipe</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          
+        
